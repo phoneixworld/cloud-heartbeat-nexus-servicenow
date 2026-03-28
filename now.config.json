@@ -1,0 +1,6 @@
+{
+  "scope": "x_rcm_nexus",
+  "scopeId": "b91f3ac2d4e84f20a6c17d8e9b3a4f51",
+  "name": "Cloud Heartbeat Nexus",
+  "tsconfigPath": "./src/fluent/tsconfig.json"
+}
