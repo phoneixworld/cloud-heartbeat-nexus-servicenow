@@ -44,8 +44,11 @@ Execute in order:
 5. testing/ATF_ROLE_API_MATRIX.md
 6. decommission/CUTOVER_DAY_BY_DAY_PLAN.md
 
+Command-by-command merge reference:
+
+- deployment/SN_BOOTSTRAP_MERGE_STEPS.md
+
 Output:
-- Cloned repo is transformed into live ServiceNow app behavior.
 
 ## Phase 4: Security and test gates
 

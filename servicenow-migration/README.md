@@ -93,6 +93,7 @@ This folder contains a practical migration baseline to move the current React + 
 - decommission/LEGACY_REMOVAL_MATRIX.md
 - deployment/IMPORT_ORDER_MANIFEST.md
 - deployment/GIT_CLONE_TO_SERVICENOW_WORKFLOW.md
+- deployment/SN_BOOTSTRAP_MERGE_STEPS.md
 - testing/ATF_ROLE_API_MATRIX.md
 
 ## Immediate next step in ServiceNow
