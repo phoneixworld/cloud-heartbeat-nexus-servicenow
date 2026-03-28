@@ -1,0 +1,79 @@
+# Git Clone to ServiceNow Workflow
+
+This runbook is for the exact model you described:
+
+1. Push this repository to GitHub.
+2. Connect ServiceNow scoped app source control to that repo.
+3. Pull/clone into ServiceNow.
+4. Execute migration waves from the cloned artifacts.
+
+## Reality check (important)
+
+A Git clone alone does not automatically convert all markdown/js artifact files into live ServiceNow records.
+
+- ServiceNow source control tracks app records and metadata.
+- This repository contains implementation-ready migration artifacts, runbooks, and script content.
+- After clone, you must execute import/build steps in instance (Script Includes, APIs, ACLs, UI Builder pages).
+
+This is still Git-first and fully valid, but not a zero-click auto-convert.
+
+## Phase 1: GitHub preparation
+
+1. Push repository to GitHub.
+2. Protect main branch and use migration branches.
+3. Tag baseline release: pre-servicenow-instance-bootstrap.
+
+## Phase 2: ServiceNow source control connection
+
+1. In App Engine Studio, create scoped app x_rcm_nexus.
+2. Open Source Control in the app.
+3. Connect to your GitHub repo URL and target branch.
+4. Pull the latest commit.
+
+Output:
+- ServiceNow app is linked to your Git repo and can pull future changes.
+
+## Phase 3: Post-clone bootstrap (required)
+
+Execute in order:
+
+1. deployment/IMPORT_ORDER_MANIFEST.md
+2. STEP6_INSTANCE_EXECUTION_PLAYBOOK.md
+3. ui-builder/PAGE_BY_PAGE_UI_BUILDER_SPEC.md
+4. ui-builder/UI_BUILDER_EXECUTION_TRACKER.md
+5. testing/ATF_ROLE_API_MATRIX.md
+6. decommission/CUTOVER_DAY_BY_DAY_PLAN.md
+
+Output:
+- Cloned repo is transformed into live ServiceNow app behavior.
+
+## Phase 4: Security and test gates
+
+1. Apply role model and ACL matrices.
+2. Apply field security policy.
+3. Run module and security ATF suites.
+4. Capture go-live evidence in execution tracker.
+
+## Phase 5: Promotion model
+
+1. Dev instance pulls from Git branch and builds features.
+2. Promote via update sets/app repo flow per your governance.
+3. Merge branch to main only after ATF and security sign-off.
+
+## What this gives you
+
+- Single source of truth in Git.
+- Repeatable clone + bootstrap process in any ServiceNow instance.
+- Full traceability from artifacts to deployed behavior.
+
+## What this does not do automatically
+
+- It does not auto-generate every ServiceNow record from markdown alone.
+- It does not auto-build UI Builder pages without instance execution.
+
+## Recommended operating rule
+
+Treat this repo as the migration control plane:
+
+- Git stores design, API contracts, scripts, test plans, and execution trackers.
+- ServiceNow instance execution materializes those artifacts into runtime objects.
